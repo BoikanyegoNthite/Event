@@ -36,12 +36,13 @@ body, html {
   .countdown-container h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: #000;
+    color: #47b94b;
   }
 
   .subtitle {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
+    color: #47b94b;
   }
 
   .countdown {
@@ -49,6 +50,7 @@ body, html {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    color: #47b94b;
   }
 
   .countdown div {
@@ -110,6 +112,7 @@ body, html {
   }
   .gallery h2 {
     margin-bottom: 20px;
+    color: #47b94b;
   }
   .slider {
     width: 100%;
@@ -215,7 +218,25 @@ body, html {
   .register form button:hover {
     background:#47b94b
   }
-  
+  .register form button {
+  padding: 8px 16px;
+  margin: 8px auto;
+  display: block;
+  width: 140px;          /* smaller width */
+  border: none;          /* remove border */
+  border-radius: 6px;
+  background: #4CAF50;   /* nice green */
+  color: white;          /* white text for contrast */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.register form button:hover {
+  background: #47b94b;
+}
+
   .map {
     text-align: center;
     padding: 40px 20px;
