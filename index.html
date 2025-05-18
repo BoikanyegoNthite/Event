@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chippa Chaba Games Countdown</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay">
+      
+      <div class="countdown-container">
+        <h1>Chippa Chaba Games 2025</h1>
+        <p class="subtitle">Get ready for the Fun walk</p>
+        <div class="countdown">
+          <div><span id="days">00</span><p>Days</p></div>
+          <div><span id="hours">00</span><p>Hours</p></div>
+          <div><span id="minutes">00</span><p>Minutes</p></div>
+          <div><span id="seconds">00</span><p>Seconds</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="event-details">
+    <h2>About the Games</h2>
+   <p style="max-width: 700px; margin: 20px auto; font-size: 18px; line-height: 1.6; text-align: center;">
+  The Chippa Chaba Primary Schools Games & Elderly Citizens Fun Walk is a unique annual community event that brings together the youth and elders to promote health, unity, and active living.
+</p>
+
+  </section>
+  <section class="gallery">
+    <h2> Previous Event</h2>
+    <div class="slider">
+      <div class="slides">
+        <!-- Radio buttons for navigation -->
+        <input type="radio" name="radio-btn" id="radio1" checked>
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+  
+        <!-- Slide images -->
+        <div class="slide first">
+          <img src="images/WhatsApp Image 2025-05-16 at 12.46.39_e490d6a0.jpg" alt="Game 1" />
+        </div>
+        <div class="slide">
+          <img src="images/WhatsApp Image 2025-05-16 at 12.46.37_8123d454.jpg" alt="Game 2" />
+        </div>
+        <div class="slide">
+          <img src="images/WhatsApp Image 2025-05-16 at 12.46.37_8123d454.jpg" alt="Game 3" />
+        </div>
+  
+        <!-- Manual navigation -->
+        <div class="navigation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="register">
+    <h2> Register to attend </h2>
+    <p>Fill in your details below to be part of the fun and unity!</p>
+    <form id="registerForm" action="register.php" method="POST">
+
+<form action="register.php" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required /><br>
+      <input type="email" name="email" placeholder="Email Address" required /><br>
+      <input type="tel" name="phone" placeholder="Phone Number (Optional)" /><br>
+      <select name="attendanceType" required>
+        <option value="">-- Select Your Role --</option>
+        <option value="Student">Student Participant</option>
+        <option value="Elder">Elder Participant</option>
+        <option value="Volunteer">Volunteer</option>
+        <option value="Guest">Guest</option>
+      </select><br><br>
+      <button type="submit">Register Now</button><br>
+      <button type="Reset">Cancel</button><br>
+    </form>
+  </section>
+  
+    
+
+
+
+
+
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    let counter = 1;
+    setInterval(() => {
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if (counter > 3) {
+        counter = 1;
+      }
+    }, 5000); // Change every 5 seconds
+  </script>
+
+
+<script>
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days*24*60*60*1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
+  // Function to get a cookie
+  function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(cname) === 0) {
+        return c.substring(cname.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  // Example: Set cookie on successful form submission
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registerForm");
+    if (form) {
+      form.addEventListener("submit", function () {
+        const name = form.elements["name"].value;
+        setCookie("chippaChabaName", name, 7); // Store name for 7 days
+      });
+    }
+
+    // Show greeting if cookie exists
+    const storedName = getCookie("chippaChabaName");
+    if (storedName) {
+      const container = document.querySelector(".countdown-container");
+      const greet = document.createElement("p");
+      greet.textContent = `Welcome back, ${storedName}! 👋`;
+      greet.style.fontWeight = "bold";
+      greet.style.marginBottom = "10px";
+      greet.style.color = "#fff";
+      container.prepend(greet);
+    }
+  });
+</script>
+<div id="cookieConsent" style="position:fixed;bottom:0;width:100%;background:#222;color:#fff;text-align:center;padding:10px;z-index:999;">
+  This website uses cookies to enhance the user experience. 
+  <button onclick="acceptCookies()" style="margin-left:10px;">Accept</button>
+</div>
+
+<script>
+  function acceptCookies() {
+    setCookie("cookiesAccepted", "true", 30);
+    document.getElementById("cookieConsent").style.display = "none";
+  }
+
+  // Hide banner if already accepted
+  window.onload = () => {
+    if (getCookie("cookiesAccepted") === "true") {
+      document.getElementById("cookieConsent").style.display = "none";
+    }
+  };
+</script>
+
+
+
+  
+
+</body>
+</html>
