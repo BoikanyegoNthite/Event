@@ -1,39 +1,41 @@
-/* Base styles */
-body {
+/* Reset and base styles */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+/* Hero Section */
 .hero {
-  background: url('images/banner.jpg') no-repeat center center/cover;
+  background: url('images/bg.jpg') no-repeat center center/cover;
   height: 100vh;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
+  color: #fff;
+  padding: 0 20px;
 }
 
 .countdown-container h1 {
-  color: #fff;
   font-size: 3rem;
   margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #fff;
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
@@ -42,28 +44,39 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  color: #fff;
   font-size: 1.5rem;
 }
 
 .countdown div {
-  background: #444;
+  background: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 10px;
-  min-width: 80px;
+  min-width: 70px;
 }
 
-/* Section titles */
-section h2 {
-  text-align: center;
+.countdown span {
   font-size: 2rem;
-  margin-top: 40px;
+  font-weight: bold;
+  display: block;
 }
 
-/* Gallery slider */
+/* Event Details Section */
+.event-details {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 40px 20px;
+  background-color: #eee;
+  text-align: center;
+}
+
 .slider {
-  width: 90%;
-  margin: 20px auto;
+  max-width: 700px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -72,7 +85,7 @@ section h2 {
 .slides {
   display: flex;
   width: 300%;
-  transition: all 0.5s ease-in-out;
+  transition: 0.6s ease;
 }
 
 .slide {
@@ -86,14 +99,13 @@ section h2 {
   display: block;
 }
 
-/* Radio buttons for gallery */
+/* Manual navigation */
 .navigation-manual {
   position: absolute;
   width: 100%;
   bottom: 10px;
   display: flex;
   justify-content: center;
-  gap: 10px;
 }
 
 .manual-btn {
@@ -101,82 +113,113 @@ section h2 {
   padding: 5px;
   border-radius: 50%;
   cursor: pointer;
+  margin: 0 5px;
+  transition: 0.3s;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
-/* Form styles */
-.register form {
-  max-width: 500px;
-  margin: 20px auto;
-  text-align: center;
+.manual-btn:hover {
   background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Register Section */
+.register {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .register input,
 .register select,
 .register button {
   width: 90%;
+  max-width: 400px;
   padding: 10px;
   margin: 10px auto;
+  display: block;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .register button {
-  background: #4CAF50;
+  background-color: #009688;
   color: #fff;
   border: none;
-  font-size: 1rem;
   cursor: pointer;
 }
 
 .register button:hover {
-  background: #45a049;
+  background-color: #00796b;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
+/* Cookie Consent */
+#cookieConsent {
+  font-size: 14px;
+}
+
+#cookieConsent button {
+  background-color: #009688;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#cookieConsent button:hover {
+  background-color: #00796b;
+}
+
+/* ------------------ */
+/* Responsive Design */
+/* ------------------ */
+
+@media screen and (max-width: 768px) {
+  .countdown {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .countdown-container h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .subtitle {
     font-size: 1rem;
   }
 
-  .countdown {
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.2rem;
-    gap: 10px;
+  .slide img {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overlay {
+    padding: 20px 10px;
+  }
+
+  .countdown-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
   }
 
   .countdown div {
-    min-width: 100px;
+    min-width: 60px;
     padding: 10px;
   }
 
-  .hero {
-    height: auto;
-    padding: 50px 0;
-  }
-
-  .overlay {
-    padding: 10px;
-  }
-
-  .register form {
-    width: 90%;
-    padding: 15px;
-  }
-
-  section h2 {
+  .countdown span {
     font-size: 1.5rem;
+  }
+
+  .register input,
+  .register select,
+  .register button {
+    width: 95%;
   }
 }
