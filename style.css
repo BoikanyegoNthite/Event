@@ -1,225 +1,323 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-}
-
-/* Hero Section */
-.hero {
-  background: url('images/bg.jpg') no-repeat center center/cover;
-  height: 100vh;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    background: #000;
+  }
+  
+  .hero {
+  background-image: url('images/cups.jpg');
+  background-size: cover;              /* Makes the image fill the container */
+  background-position: center;         /* Centers the image */
+  background-repeat: no-repeat;
+  height: 100vh;                       /* Full height of the viewport */
+  width: 100%;
   position: relative;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: #ffffff;                      /* Better text visibility on image */
   text-align: center;
-  color: #fff;
-  padding: 0 20px;
 }
 
-.countdown-container h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+  z-index: 1;
 }
 
-.subtitle {
-  font-size: 1.2rem;
+.hero .overlay {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+    padding: 4rem 2rem;
+    background-attachment: scroll;
+  }
+}
+
+  
+ 
+  
+  
+  
+  .countdown-container {
+    max-width: 700px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .countdown-container h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #4CAF50;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #eee;
+  }
+  
+  .countdown {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+  }
+  
+  .countdown div {
+    background: #4CAF50;
+    color: #000;
+    border-radius: 12px;
+    padding: 20px 15px;
+    min-width: 80px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .countdown span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .countdown p {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+  .event-details {
+    background: #fff;
+    color: #222;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .event-details h2 {
+    color: #4CAF50;
+  }
+  
+  .gallery {
+    padding: 40px 20px;
+    background: #f0f0f0;
+    text-align: center;
+  }
+  .gallery h2 {
+    margin-bottom: 20px;
+  }
+  .slider {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+  }
+  
+  .slides input {
+    display: none;
+  }
+  
+  .slide {
+    width: 100%;
+    transition: 0.6s;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Manual navigation */
+  .navigation-manual {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .manual-btn {
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 0 10px;
+  }
+  
+  .manual-btn:hover {
+    background: #fff;
+  }
+  
+  /* Slide movement */
+  #radio1:checked ~ .first {
+    margin-left: 0;
+  }
+  #radio2:checked ~ .first {
+    margin-left: -100%;
+  }
+  #radio3:checked ~ .first {
+    margin-left: -200%;
+  }
+  
+  .images {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .images img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .register {
+    background: #fff;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .register h2 {
+    color: #4CAF50;
+  }
+  .register form input,
+  .register form button {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  .register form button {
+    background:#4CAF50;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .register form button:hover {
+    background:#47b94b
+  }
+  
+  .map {
+    text-align: center;
+    padding: 40px 20px;
+    background: #000;
+  }
+  .map h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  /* Footer Container */
+footer {
+  background-color: #0c0c0c;
+  color: #ffffff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Follow Us Section */
+.footer-social {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.countdown {
+.footer-social h4 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Social Icons */
+.social-icons {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  font-size: 1.5rem;
+  gap: 15px;
 }
 
-.countdown div {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 10px;
-  min-width: 70px;
-}
-
-.countdown span {
-  font-size: 2rem;
-  font-weight: bold;
-  display: block;
-}
-
-/* Event Details Section */
-.event-details {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #fff;
-}
-
-/* Gallery Section */
-.gallery {
-  padding: 40px 20px;
-  background-color: #eee;
-  text-align: center;
-}
-
-.slider {
-  max-width: 700px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.slides {
-  display: flex;
-  width: 300%;
-  transition: 0.6s ease;
-}
-
-.slide {
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Manual navigation */
-.navigation-manual {
-  position: absolute;
-  width: 100%;
-  bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.manual-btn {
-  border: 2px solid #fff;
-  padding: 5px;
+.social-icons a {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #0c0c0c;
   border-radius: 50%;
-  cursor: pointer;
-  margin: 0 5px;
-  transition: 0.3s;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
 }
 
-.manual-btn:hover {
-  background: #fff;
+.social-icons a:hover {
+  background-color: #ff5733;
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
-/* Register Section */
-.register {
-  background-color: #fff;
-  padding: 40px 20px;
+/* Footer Bottom */
+.footer-bottom {
   text-align: center;
-}
-
-.register input,
-.register select,
-.register button {
-  width: 90%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 10px auto;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.register button {
-  background-color: #009688;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.register button:hover {
-  background-color: #00796b;
-}
-
-/* Cookie Consent */
-#cookieConsent {
+  border-top: 1px solid #333;
+  padding-top: 15px;
   font-size: 14px;
+  margin-top: 30px;
+  color: #bbbbbb;
 }
 
-#cookieConsent button {
-  background-color: #009688;
+.footer-bottom a {
+  color: #ff5733;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: none;
+}
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
+  padding: 15px 20px;
+  font-size: 15px;
+  text-align: center;
+  z-index: 9999;
+  display: none;
+}
+
+.cookie-banner a {
+  color: #ff9800;
+  text-decoration: underline;
+}
+
+.cookie-banner button {
+  background-color: #ff9800;
+  color: white;
   border: none;
-  padding: 5px 10px;
-  margin-left: 10px;
+  padding: 10px 15px;
+  margin-left: 15px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
 }
 
-#cookieConsent button:hover {
-  background-color: #00796b;
-}
-
-/* ------------------ */
-/* Responsive Design */
-/* ------------------ */
-
-@media screen and (max-width: 768px) {
-  .countdown {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .countdown-container h1 {
-    font-size: 2.2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .slide img {
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .overlay {
-    padding: 20px 10px;
-  }
-
-  .countdown-container h1 {
-    font-size: 1.8rem;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .countdown div {
-    min-width: 60px;
-    padding: 10px;
-  }
-
-  .countdown span {
-    font-size: 1.5rem;
-  }
-
-  .register input,
-  .register select,
-  .register button {
-    width: 95%;
-  }
-}
